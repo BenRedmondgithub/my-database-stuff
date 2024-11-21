@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <title>{%block text%}FlaskApp{%endblock%}</title>
+
+    <style>
+        .message {
+            padding: 10px;
+            margin: 5px;
+            background-color: #d7fae7
+        }
+        nav a {
+            color: #8de2f1;
+            font-size: 1.5em;
+            margin-left: 50px;
+            text-decoration: underline;
+        }
+
+        .alert {
+                padding: 20px;
+                margin: 5px;
+                color: #8de2f1;
+                background-color: #ff0000;
+        }
+    </style>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav">
+
+                    <li class="nav-item">
+                        <a href="{{ url_for('index') }}">FlaskApp</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{ url_for('about') }}">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{ url_for('comments') }}">Comments</a>
+                      </li>
+
+                    <li class="nav-item">
+                        <a href="{{url_for('create')}}">Create</a>
+                    
+                    </li class="nav-item">
+                    <a href="{{url_for('course')}}">Courses</a>
+                    <li>
+
+                    </li>
+
+                </ul>
+                
+                <hr>
+            
+            <di class="content">
+            {% for message in get_flashed_messages() %}
+                <div class="alert">{{ message }}</div>
+            {% endfor %}
+
+        </nav>
+        {% block content %}<div class="container">{% endblock %}
+             
+        </div>
+        
+</body>
+</html>
